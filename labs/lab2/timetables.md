@@ -7,4 +7,4 @@
 - [Расписание на вторую неделю](timetable_2w.md)
 - [Расписание на третью неделю](timetable_3w.md)
 
-![alt text](<голубино.jpg>)
+![alt text](<pic.jpg>)
