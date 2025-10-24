@@ -21,10 +21,9 @@
 # print(f)
 
 # # 5
-# a =21
+# a = 20
 # while(a > 0):
-#    a = a-1
-#    print(a)
+#     print(a)
 
 # # 6
 # f = int(input())
