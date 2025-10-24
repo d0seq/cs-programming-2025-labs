@@ -36,8 +36,8 @@
 # # 7
 # s = input("in: ")
 # s1 = ""
-# for i, j in enumerate(s, 1):
-#     s1 += j + str(i)
+# for i in range(len(s)):
+#     s1 += f"{s[i]}{i+1}"
 # print("out: ", s1)
 
 # # 8
