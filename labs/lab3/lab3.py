@@ -40,7 +40,6 @@
 # print("out: ", s1)
 
 # # 8
-# s =2
-# while(s > 1):
+# while True:
 #   a, b = map(int, input("Введите два числа через пробел: ").split())
 #   print(f"Сумма равна: {a + b}")
