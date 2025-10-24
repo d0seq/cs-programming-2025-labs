@@ -30,7 +30,9 @@
 # a, b = 0, 1
 # while a <= f:
 #    print(a)
-#    a, b = b, a + b
+#    c = a + b
+#    a = b 
+#    b = c
 
 # # 7
 # s = input("in: ")
@@ -41,5 +43,5 @@
 
 # # 8
 # while True:
-#   a, b = map(int, input("Введите два числа через пробел: ").split())
-#   print(f"Сумма равна: {a + b}")
+#   a, b = input("Введите два числа через пробел: ").split()
+#   print(f"Сумма равна: {int(m[0]) + int(m[1])}")
