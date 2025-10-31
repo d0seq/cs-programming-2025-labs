@@ -1,6 +1,6 @@
 # # 1
-# name = str(input())
-# age = str(input())
+# name = str(input("Ведите имя"))
+# age = str(input("Введите возраст"))
 # for i in range(10):
 #    print(f"Меня зовут {name} и мне {age} лет")
 
