@@ -91,7 +91,7 @@ elif summa <= 10000:
     sale = 10
 else:
     sale = 15
-y = summa - sale / 100
+y = summa * (1 - sale / 100)
 print(f"Ваша скидка: {sale}%")
 print(f"К оплате: {y} руб.")
 
