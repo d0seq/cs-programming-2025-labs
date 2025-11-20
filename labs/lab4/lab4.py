@@ -1,6 +1,6 @@
 #Задание 1
 temperature = float (input("введите температуру: "))
-if temperature < 20:
+if temperature <= 20:
     print("Кондиционер включен")
 else:
     print("Кондиционер выключен")
