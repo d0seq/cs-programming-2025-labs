@@ -1,96 +1,121 @@
 # Задание 1
-def time_converter(x, y, z):
-    if y == 'h':
-        s = x * 3600
-    elif y == 'm':
-        s = x * 60
+def konvert_vremeni(chislo, ot_chego, v_chto):
+    if ot_chego == "h":
+        sekundi = chislo * 3600
+    elif ot_chego == "m":
+        sekundi = chislo * 60
     else:
-        s = x
+        sekundi = chislo
     
-    if z == 'h':
-        r = s / 3600
-    elif z == 'm':
-        r = s / 60
+    if v_chto == "h":
+        otvet = sekundi / 3600
+    elif v_chto == "m":
+        otvet = sekundi / 60
     else:
-        r = s
+        otvet = sekundi
     
-    return f"{r:.2f}{z}"
+    print(str(otvet) + v_chto)
 
 # Задание 2
-def calculate_profit(x, y):
-    if x < 30000:
-        return "Error!"
+def vklad(summa, let):
+    if summa < 30000:
+        print("Error!")
+        return
     
-    a = (x // 10000) * 0.3
-    if a > 5:
-        a = 5
+    dop_stavka = summa // 10000 * 0.3
+    if dop_stavka > 5:
+        dop_stavka = 5
     
-    if y <= 3:
-        b = 3
-    elif y <= 6:
-        b = 5
+    if let <= 3:
+        osn_stavka = 3
+    elif let <= 6:
+        osn_stavka = 5
     else:
-        b = 2
+        osn_stavka = 2
     
-    c = b + a
-    d = x
+    stavka_vsego = osn_stavka + dop_stavka
     
-    for _ in range(int(y)):
-        d = d * (1 + c/100)
+    vsego_deneg = summa
+    god = 0
+    while god < let:
+        vsego_deneg = vsego_deneg + vsego_deneg * stavka_vsego / 100
+        god = god + 1
     
-    e = d - x
-    return f"{e:.2f}"
+    pribil = vsego_deneg - summa
+    print(pribil)
 
 # Задание 3
-def find_primes(x, y):
-    if x > y:
-        return "Error!"
+def prostie_chisla(nachalo, konec):
+    if nachalo > konec:
+        print("Error!")
+        return
     
-    z = []
-    for i in range(x, y + 1):
-        if i > 1:
-            p = True
-            for j in range(2, i):
-                if i % j == 0:
-                    p = False
+    spisok = []
+    chislo = nachalo
+    
+    while chislo <= konec:
+        if chislo > 1:
+            prostoe = True
+            delitel = 2
+            while delitel < chislo:
+                if chislo % delitel == 0:
+                    prostoe = False
                     break
-            if p:
-                z.append(i)
+                delitel = delitel + 1
+            
+            if prostoe == True:
+                spisok.append(chislo)
+        
+        chislo = chislo + 1
     
-    if not z:
-        return "Нет простых чисел"
+    if len(spisok) == 0:
+        print("Нет простых чисел")
     else:
-        return " ".join(map(str, z))
+        for x in spisok:
+            print(x, end=" ")
 
 # Задание 4
-def add_matrices(n, m1, m2):
-    if n <= 2:
-        return "Error!"
+def slozhenie_matric(razmer, matrica1, matrica2):
+    if razmer <= 2:
+        print("Error!")
+        return
     
-    r = []
-    for i in range(n):
-        t = []
-        for j in range(n):
-            t.append(m1[i][j] + m2[i][j])
-        r.append(t)
+    otvet = []
     
-    return r
+    i = 0
+    while i < razmer:
+        stroka = []
+        j = 0
+        while j < razmer:
+            stroka.append(matrica1[i][j] + matrica2[i][j])
+            j = j + 1
+        otvet.append(stroka)
+        i = i + 1
+    
+    for stroka in otvet:
+        for chislo in stroka:
+            print(chislo, end=" ")
+        print()
 
 # Задание 5
-def check_palindrome(s):
-    t = ""
-    for c in s:
-        if c != " ":
-            t += c.lower()
+def palindrom(stroka):
+    chistaya = ""
     
-    p = True
-    l = len(t)
-    for i in range(l // 2):
-        if t[i] != t[l - 1 - i]:
-            p = False
+    for bukva in stroka:
+        if bukva != " ":
+            chistaya = chistaya + bukva.lower()
+    
+    pal = True
+    dlina = len(chistaya)
+    
+    i = 0
+    while i < dlina // 2:
+        if chistaya[i] != chistaya[dlina - 1 - i]:
+            pal = False
             break
+        i = i + 1
     
-    if p:
-        return "Да"
+    if pal == True:
+        print("Да")
     else:
-        return "Нет"
+        print("Нет")
