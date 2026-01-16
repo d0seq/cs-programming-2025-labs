@@ -1,93 +1,96 @@
-#Задание 1
-unit = {"h": 3600, "m": 60, "s": 1}
-def time(x, y, z):
-    return x * unit[y] / unit[z]
-first = time(4, "h", "m")
-second = time(30, "m", "h")
-third = time(12, "s", "h")
-print(f"{first}m") 
-print(f"{second}h")
-print(f"{third}h")
+# Задание 1
+def time_converter(x, y, z):
+    if y == 'h':
+        s = x * 3600
+    elif y == 'm':
+        s = x * 60
+    else:
+        s = x
+    
+    if z == 'h':
+        r = s / 3600
+    elif z == 'm':
+        r = s / 60
+    else:
+        r = s
+    
+    return f"{r:.2f}{z}"
 
-#Задание 2
-def calculate(x: int, y: int):
+# Задание 2
+def calculate_profit(x, y):
     if x < 30000:
-        return 0
-    total = 0
-    base = min(0.3 * (x // 10000), 5)
-    for i in range(y):
-        if i <= 2: rate = 3
-        elif i < 6: rate = 5
-        else: rate = 2
-        interest = x * ((base + rate) * 0.01)
-        total += interest
-        x += interest
-    return total
-first = calculate(30000, 3)
-second = calculate(100000, 5)
-third = calculate(200000, 8)
-print(f"{first}")
-print(f"{second}")
-print(f"{third}")
+        return "Error!"
+    
+    a = (x // 10000) * 0.3
+    if a > 5:
+        a = 5
+    
+    if y <= 3:
+        b = 3
+    elif y <= 6:
+        b = 5
+    else:
+        b = 2
+    
+    c = b + a
+    d = x
+    
+    for _ in range(int(y)):
+        d = d * (1 + c/100)
+    
+    e = d - x
+    return f"{e:.2f}"
 
-#Задание 3
-def prime(x):
-    if x < 2: return False
-    if x == 2: return True
-    if x % 2 == 0: return False
-    return all(x % i for i in range(3, int(x**0.5) + 1, 2))
-def primes(a, b):
-    p = [str(x) for x in range(a, b + 1) if prime(x)]
-    if not p: return "Error!"
-    r = ""
-    for i in p:
-        r += i + " "
-    return r[:-1]
-first = primes(1, 10)
-second = primes(15, 120)
-third = primes(0, 1)
-print(f"{first}")
-print(f"{second}")
-print(f"{third}")
+# Задание 3
+def find_primes(x, y):
+    if x > y:
+        return "Error!"
+    
+    z = []
+    for i in range(x, y + 1):
+        if i > 1:
+            p = True
+            for j in range(2, i):
+                if i % j == 0:
+                    p = False
+                    break
+            if p:
+                z.append(i)
+    
+    if not z:
+        return "Нет простых чисел"
+    else:
+        return " ".join(map(str, z))
 
-#Задание 4
-def matrix(n):
-    return [list(map(int, input().split())) for _ in range(n)]
-def summa(x, y, z):
+# Задание 4
+def add_matrices(n, m1, m2):
+    if n <= 2:
+        return "Error!"
+    
+    r = []
     for i in range(n):
+        t = []
         for j in range(n):
-            print(x[i][j] + y[i][j], end=" ")
-        print()
-n = int(input())
-first = matrix(n)
-second = matrix(n)
-if any(len(row) != n for row in first + second):
-    print("Error!")
-else:
-    summa(first, second, n)
+            t.append(m1[i][j] + m2[i][j])
+        r.append(t)
+    
+    return r
 
-#Задание 5
-def palindrome(text):
-    symbols = " !?,.;:-_'\""
-    list = {
-        'A': 'a', 'B': 'b', 'C': 'c', 'D': 'd', 'E': 'e', 'F': 'f', 'G': 'g',
-        'H': 'h', 'I': 'i', 'J': 'j', 'K': 'k', 'L': 'l', 'M': 'm', 'N': 'n',
-        'O': 'o', 'P': 'p', 'Q': 'q', 'R': 'r', 'S': 's', 'T': 't', 'U': 'u',
-        'V': 'v', 'W': 'w', 'X': 'x', 'Y': 'y', 'Z': 'z',
-        'А': 'а', 'Б': 'б', 'В': 'в', 'Г': 'г', 'Д': 'д', 'Е': 'е', 'Ё': 'ё',
-        'Ж': 'ж', 'З': 'з', 'И': 'и', 'Й': 'й', 'К': 'к', 'Л': 'л', 'М': 'м',
-        'Н': 'н', 'О': 'о', 'П': 'п', 'Р': 'р', 'С': 'с', 'Т': 'т', 'У': 'у',
-        'Ф': 'ф', 'Х': 'х', 'Ц': 'ц', 'Ч': 'ч', 'Ш': 'ш', 'Щ': 'щ', 'Ъ': 'ъ',
-        'Ы': 'ы', 'Ь': 'ь', 'Э': 'э', 'Ю': 'ю', 'Я': 'я'
-    }
-    y = ""
-    for x in text:
-        if x not in symbols:
-            y += list.get(x, x)
-    return "Да" if y == y[::-1] else "Нет"
-first = palindrome("А роза упала на лапу Азора")
-second = palindrome("Borrow or rob")
-third = palindrome("Алфавитный порядок")
-print(f"{first}") 
-print(f"{second}")
-print(f"{third}")
+# Задание 5
+def check_palindrome(s):
+    t = ""
+    for c in s:
+        if c != " ":
+            t += c.lower()
+    
+    p = True
+    l = len(t)
+    for i in range(l // 2):
+        if t[i] != t[l - 1 - i]:
+            p = False
+            break
+    
+    if p:
+        return "Да"
+    else:
+        return "Нет"
