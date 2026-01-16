@@ -7,7 +7,6 @@ objects = [
 ]
 
 sorted_objects = sorted(objects, key=lambda x: x[1])
-print("Задание 1 - Отсортированные объекты:")
 for obj in sorted_objects:
     print(f"  {obj[0]}: {obj[1]}")
 
@@ -24,7 +23,7 @@ total_costs = list(map(lambda emp: {
 }, staff_shifts))
 
 max_cost = max(total_costs, key=lambda x: x["total_cost"])
-print("\nЗадание 2 - Общая стоимость:")
+
 for cost in total_costs:
     print(f"  {cost['name']}: ${cost['total_cost']}")
 print(f"  Максимальная: {max_cost['name']} - ${max_cost['total_cost']}")
@@ -43,7 +42,7 @@ personnel_with_category = list(map(lambda p: {
                "Confidential" if p["level"] >= 2 else 
                "Restricted"
 }, personnel))
-print("\nЗадание 3 - Персонал с категориями:")
+
 for p in personnel_with_category:
     print(f"  {p['name']}: уровень {p['level']} - {p['category']}")
 
@@ -55,7 +54,7 @@ zones = [
 ]
 
 daytime_zones = list(filter(lambda z: z["start"] >= 8 and z["end"] <= 18, zones))
-print("\nЗадание 4 - Дневные зоны:")
+
 for z in daytime_zones:
     print(f"  {z['zone']}: {z['start']}:00-{z['end']}:00")
 
@@ -72,7 +71,7 @@ cleaned_reports = list(map(lambda r: {
     "author": r["author"],
     "content": r["content"].replace("http", "[ДАННЫЕ УДАЛЕНЫ]").replace("https", "[ДАННЫЕ УДАЛЕНЫ]")
 }, http_reports))
-print("\nЗадание 5 - Очищенные отчеты:")
+
 for r in cleaned_reports:
     print(f"  {r['author']}: {r['content']}")
 
@@ -86,7 +85,7 @@ scp_objects = [
 ]
 
 enhanced_scp = list(filter(lambda s: s["class"] != "Safe", scp_objects))
-print("\nЗадание 6 - SCP с усиленными мерами:")
+
 for scp in enhanced_scp:
     print(f"  {scp['scp']}: класс {scp['class']}")
 
@@ -100,7 +99,7 @@ incidents = [
 
 sorted_incidents = sorted(incidents, key=lambda x: x["staff"], reverse=True)
 top_three = sorted_incidents[:3]
-print("\nЗадание 7 - Топ-3 инцидента:")
+
 for inc in top_three:
     print(f"  Инцидент {inc['id']}: {inc['staff']} персонала")
 
@@ -113,14 +112,14 @@ protocols = [
 ]
 
 protocol_strings = list(map(lambda p: f"Protocol {p[0]} - Criticality {p[1]}", protocols))
-print("\nЗадание 8 - Протоколы:")
+
 for proto in protocol_strings:
     print(f"  {proto}")
 
 # Задание 9
 shifts = [6, 12, 8, 24, 10]
 filtered_shifts = list(filter(lambda x: x >= 8 and x <= 12, shifts))
-print("\nЗадание 9 - Отфильтрованные смены:")
+
 print(f"  {filtered_shifts}")
 
 # Задание 10
@@ -132,5 +131,5 @@ evaluations = [
 ]
 
 best_employee = max(evaluations, key=lambda x: x["score"])
-print("\nЗадание 10 - Лучший сотрудник:")
+
 print(f"  {best_employee['name']}: {best_employee['score']} баллов")
