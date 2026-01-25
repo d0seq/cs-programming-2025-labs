@@ -1,5 +1,6 @@
 from config import FUEL_PRICES, MIN_FUEL_LEVEL, COLUMNS_CONFIG
 
+
 class AZS:
     def __init__(self, data):
         self.emergency = data["emergency"]
@@ -19,7 +20,7 @@ class AZS:
         return {name: tank for name, tank in self.tanks.items() if tank["fuel_type"] == fuel_type}
 
     def check_low_tanks(self):
-        """Возвращает список отключённых цистерн из-за низкого уровня"""
+        """Отключает цистерны с уровнем топлива ниже MIN_FUEL_LEVEL"""
         low = []
         for name, tank in self.tanks.items():
             if tank["current"] < MIN_FUEL_LEVEL and tank["active"]:
