@@ -1,0 +1,51 @@
+{
+    "emergency": true,
+    "tanks": {
+        "АИ-92_1": {
+            "fuel_type": "АИ-92",
+            "max_volume": 20000,
+            "current": 12358.0,
+            "active": false
+        },
+        "АИ-95_1": {
+            "fuel_type": "АИ-95",
+            "max_volume": 20000,
+            "current": 9800,
+            "active": false
+        },
+        "АИ-95_2": {
+            "fuel_type": "АИ-95",
+            "max_volume": 20000,
+            "current": 1200,
+            "active": false
+        },
+        "АИ-98_1": {
+            "fuel_type": "АИ-98",
+            "max_volume": 15000,
+            "current": 10002.0,
+            "active": false
+        },
+        "ДТ_1": {
+            "fuel_type": "ДТ",
+            "max_volume": 25000,
+            "current": 15600,
+            "active": false
+        }
+    },
+    "stats": {
+        "total_income": 2100.0,
+        "cars_served": 1,
+        "fuel_sold": {
+            "АИ-92": 42.0,
+            "АИ-95": 0,
+            "АИ-98": 0,
+            "ДТ": 0
+        }
+    },
+    "history": [
+        "Продажа: колонка 1, АИ-92, 42.0 л, 2100.0 ₽",
+        "Пополнение: цистерна АИ-98_1, +2.0 л",
+        "Цистерна АИ-98_1 включена",
+        "АВАРИЯ: все цистерны заблокированы"
+    ]
+}
