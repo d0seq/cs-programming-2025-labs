@@ -39,7 +39,7 @@ def show_header(azs):
     print("="*50)
 
     if azs.emergency:
-        print("\n⚠️  АВАРИЙНЫЙ РЕЖИМ! Все операции кроме выхода и отключения аварии заблокированы.")
+        print("\n АВАРИЙНЫЙ РЕЖИМ! Все операции кроме выхода и отключения аварии заблокированы.")
     else:
         inactive = azs.get_inactive_tanks()
         if inactive:
@@ -63,7 +63,7 @@ def menu_serve_client(azs):
     fuel_list = list(fuels.keys())
     for i, ft in enumerate(fuel_list, 1):
         tank_name = fuels[ft]
-        status = "✅" if azs.tanks[tank_name]["active"] else "❌"
+        status = "ACTIVE" if azs.tanks[tank_name]["active"] else "NON ACTIVE"
         print(f"{i}) {ft:<6} (цистерна {tank_name}) {status}")
 
     choice = input_int("Выберите тип топлива: ", 1, len(fuel_list))
@@ -204,14 +204,14 @@ def menu_columns(azs):
         fuels = COLUMNS_CONFIG[col]
         for ft, tank_name in fuels.items():
             tank = azs.tanks[tank_name]
-            status = "✅" if tank["active"] else "❌"
+            status = "ACTIVE" if tank["active"] else "NON ACTIVE"
             print(f"  {ft:<6} → {tank_name} {status}")
         print()
     input("Нажмите Enter...")
 
 def menu_emergency(azs):
     if azs.emergency:
-        print("\n⚠️  Аварийный режим уже активен!")
+        print("\n Аварийный режим уже активен!")
         confirm = input("Выключить аварийный режим? (y/n): ").strip().lower()
         if confirm == 'y':
             azs.deactivate_emergency()
@@ -219,7 +219,7 @@ def menu_emergency(azs):
         else:
             print("Остаёмся в аварии.")
     else:
-        print("\n⚠️  ВНИМАНИЕ! Активация аварийного режима остановит всю заправку!")
+        print("\n ВНИМАНИЕ! Активация аварийного режима остановит всю заправку!")
         confirm = input("Подтвердить аварию? (y/n): ").strip().lower()
         if confirm == 'y':
             azs.activate_emergency()
